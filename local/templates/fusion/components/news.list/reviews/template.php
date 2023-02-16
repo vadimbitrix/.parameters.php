@@ -11,6 +11,10 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+use \Bitrix\Main\Localization\Loc;
+Loc::loadLanguageFile(__FILE__);
+
 if($arParams['SLIDER_ID']):
 ?>
 <section id="testimonial" class="testimonial section-padding">
@@ -31,7 +35,7 @@ if($arParams['SLIDER_ID']):
                                          alt="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>">
                                 <?else:?>
                                     <img class="img-fluid" src="/upload/noavatar.png"
-                                         alt="нет фото">
+                                         alt="<?=Loc::getMessage('NO_PHOTO')?>">
                                 <?endif;?>
                             </div>
                             <div class="info">
@@ -68,5 +72,5 @@ if($arParams['SLIDER_ID']):
     </script>
     <script src="<?=$templateFolder?>/slider.js"></script>
 <?else:?>
-    не задан id для слайдера
+    <?=Loc::getMessage('SLIDER_ID')?>
 <?endif?>
